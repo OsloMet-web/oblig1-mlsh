@@ -7,17 +7,17 @@
 <body>
 <h1>Bestilling av kinobiletter</h1>
 <br>
-<label for="film">Velg film: </label>
-<select name="film" id="film">
-    <option value="" disabled selected hidden>Velg film her</option>
-    <option value="Shrek 1">Shrek 1 </option>
-    <option value="Shrek 2">Shrek 2 </option>
-    <option value="Shrek 3">Shrek 3 </option>
-    <option value="Shrek 4">Shrek 4 </option>
-</select>
 <br>
-<br>
-<form>
+<form action="" id="movieForm">
+    <label for="film">Velg film: </label>
+    <select name="film" id="film">
+        <option value="" disabled selected hidden>Velg film her</option>
+        <option value="Shrek 1">Shrek 1 </option>
+        <option value="Shrek 2">Shrek 2 </option>
+        <option value="Shrek 3">Shrek 3 </option>
+        <option value="Shrek 4">Shrek 4 </option>
+    </select>
+    <br>
 <label for="antall">Antall</label>
 <input type="number" name="antall" id="antall" min="0" style="width: 34px"/>
 <br>
@@ -34,13 +34,19 @@
     <label for="epost">Epost</label>
     <input type="email" name="epost" id="epost"/>
     <br>
-    <button>Kjøp billett</button>
+    <button type="submit">Kjøp billett</button>
     <br>
     <br>
     <h2>Alle billetter</h2>
     <br>
-    <h3>Film Antall Fornavn Etternavn Telefonnr Epost</h3>
-    <button>Slett alle billettene</button>
+
+
 </form>
+<li> <h3>Film   Antall   Fornavn   Etternavn   Telefonnr   Epost </h3></li>
+<ul id ="liste">
+
+</ul>
+<button id="slettAlleBilletteneBtn">Slett alle billettene</button>
+<script src="index.js"></script>
 </body>
 </html>
