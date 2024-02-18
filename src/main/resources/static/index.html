@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fram Porno</title>
+    <title>Kino</title>
 </head>
 <body>
 <h1>Bestilling av kinobiletter</h1>
 <br>
 <br>
 <form action="" id="movieForm">
-    <label for="film">Velg film: </label>
+    <label for="film">Velg film* </label>
     <select name="film" id="film">
         <option value="" disabled selected hidden>Velg film her</option>
         <option value="Shrek 1">Shrek 1 </option>
@@ -17,22 +17,28 @@
         <option value="Shrek 3">Shrek 3 </option>
         <option value="Shrek 4">Shrek 4 </option>
     </select>
+    <p  hidden id ="velgfilmValidation">Velg film!</p>
     <br>
-<label for="antall">Antall</label>
+<label for="antall">Antall*</label>
 <input type="number" name="antall" id="antall" min="0" style="width: 34px"/>
+    <p hidden  id = "antallValidation">Skriv inn antall</p>
 <br>
 <br>
-<label for="fornavn">Fornavn</label>
+<label for="fornavn">Fornavn*</label>
 <input type="text" name="fornavn" id="fornavn"/>
+   <p hidden id="firstnameValidation"> Skriv inn fornavn!</p>
 <br>
-<label for="etternavn">Etternavn</label>
+<label for="etternavn">Etternavn*</label>
 <input type="text" name="etternavn" id="etternavn"/>
+    <p hidden id="lastnameValidation">Skriv inn etternavn</p>
     <br>
-    <label for="telefonnr">Telefonnr</label>
+    <label for="telefonnr">Telefonnr*</label>
     <input type="tel" name="telefonnr" id="telefonnr"/>
+    <p hidden id = "telefonnrValidation">Skriv inn telefonnummer</p>
     <br>
-    <label for="epost">Epost</label>
+    <label for="epost">Epost*</label>
     <input type="email" name="epost" id="epost"/>
+    <p hidden id = "emailValidation">Skriv inn Email</p>
     <br>
     <button type="submit">Kjøp billett</button>
     <br>
@@ -42,11 +48,20 @@
 
 
 </form>
-<li> <h3>Film   Antall   Fornavn   Etternavn   Telefonnr   Epost </h3></li>
+ <h3>Film   Antall   Fornavn   Etternavn   Telefonnr   Epost </h3>
 <ul id ="liste">
 
 </ul>
 <button id="slettAlleBilletteneBtn">Slett alle billettene</button>
 <script src="index.js"></script>
+<style>
+    label {
+        width: 74px;
+        display: inline-block;
+    }
+</style>
 </body>
+
 </html>
+
+

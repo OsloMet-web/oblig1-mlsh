@@ -1,52 +1,116 @@
 let movieForm = document.getElementById("movieForm")
 
+let receiptList = [];
+
 
 movieForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    let movie = document.getElementById('film')
-    let count = document.getElementById('antall')
-    let firstName = document.getElementById('fornavn')
-    let lastName = document.getElementById('etternavn')
-    let phoneNr = document.getElementById('telefonnr')
-    let eMail = document.getElementById("epost")
+    var isValid = true;
 
-    if (movie.value == ""){
-        alert("Velg film")
+    let receipt = {
+        movie:  document.getElementById('film').value,
+        count: document.getElementById('antall').value,
+        firstName: document.getElementById('fornavn').value,
+        lastName: document.getElementById('etternavn').value,
+        phoneNr:document.getElementById('telefonnr').value,
+        eMail: document.getElementById("epost").value
     }
-    if (count.value <= 0){
-        alert("Skriv inn antall")
-    }
-    if (firstName.value == ""){
-        alert("Skriv inn fornavn")
-    }
-    if (lastName.value == ""){
-        alert("Skriv inn etternavn")
-    }
-    if (phoneNr.value <= 0){
-        alert("Skriv inn telefonnummer")
-    }
-    if( eMail == ""){
-        alert("Skriv inn Epost")
-    }
-    let node = document.createElement("li")
-    let textNode = document.createTextNode(movie.value+"   "+count.value+"   "+firstName.value +"   "+lastName.value+"   "+phoneNr.value+"   "+eMail.value )
-    node.appendChild(textNode)
-    document.getElementById("liste").appendChild(node)
 
-   let deleteButton = document.createElement("button");
-    deleteButton.textContent = "Slett billett";
-    deleteButton.addEventListener("click",function(){
-        node.remove();
 
-    })
+
+
+    if (receipt.movie == ""){
+       document.getElementById('velgfilmValidation').hidden = false;
+       document.getElementById('velgfilmValidation').style.color = "red";
+       document.getElementById('velgfilmValidation').style.display = "inline";
+
+       isValid = false;
+    } else{
+        document.getElementById('velgfilmValidation').hidden = true;
+
+    }
+    if (receipt.count <= 0){
+        document.getElementById('antallValidation').hidden = false;
+        document.getElementById('antallValidation').style.color = "red";
+        document.getElementById('antallValidation').style.display = "inline";
+
+        isValid = false;
+    } else {
+        document.getElementById('antallValidation').hidden = true;
+    }
+    if (receipt.firstName == ""){
+        document.getElementById('firstnameValidation').hidden = false;
+        document.getElementById('firstnameValidation').style.color = "red";
+        document.getElementById('firstnameValidation').style.display = "inline";
+
+        isValid = false;
+    } else{
+        document.getElementById('firstnameValidation').hidden = true;
+    }
+    if (receipt.lastName== ""){
+        document.getElementById('lastnameValidation').hidden = false;
+        document.getElementById('lastnameValidation').style.color = "red";
+        document.getElementById('lastnameValidation').style.display = "inline";
+
+        isValid = false;
+    }else{
+        document.getElementById('lastnameValidation').hidden = true
+    }
+    if (receipt.phoneNr <= 0){
+        document.getElementById('telefonnrValidation').hidden = false;
+        document.getElementById('telefonnrValidation').style.color = "red";
+        document.getElementById('telefonnrValidation').style.display = "inline";
+
+        isValid = false;
+    }else{
+        document.getElementById('telefonnrValidation').hidden = true;
+    }
+    if( receipt.eMail == ""){
+        document.getElementById('emailValidation').hidden = false;
+        document.getElementById('emailValidation').style.color = "red";
+        document.getElementById('emailValidation').style.display = "inline";
+
+        isValid = false;
+    }else{
+        document.getElementById('emailValidation').hidden = true;
+    }
+
+    if(!isValid){
+        return;
+    }
+
+
+    receiptList.push(receipt);
+
+
+    var list = document.getElementById("liste");
+
+
+    list.innerHTML = '';
+
+
+    receiptList.forEach(function(item) {
+
+        var listItem = document.createElement("li");
+
+        listItem.textContent =  item.movie+ " "+item.count+" " + item.firstName +"   "+item.lastName+"   "+item.phoneNr+"   "+item.eMail ;
+
+        list.appendChild(listItem);
+    });
+
+
 
     document.getElementById("slettAlleBilletteneBtn").addEventListener('click', function (){
         let list = document.getElementById('liste')
         while (list.firstChild){
             list.removeChild(list.firstChild)
         }
+
+        receiptList = [];
+
     })
+
 
     node.appendChild(deleteButton);
 
