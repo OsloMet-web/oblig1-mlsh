@@ -1,8 +1,8 @@
 let movieForm = document.getElementById("movieForm")
 
 let receiptList = [];
-
-
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^\d{8}$/;
 movieForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -57,7 +57,7 @@ movieForm.addEventListener("submit", (e) => {
     }else{
         document.getElementById('lastnameValidation').hidden = true
     }
-    if (receipt.phoneNr <= 0){
+    if (receipt.phoneNr <= 0 || !emailRegex.test(receipt.phoneNr)){
         document.getElementById('telefonnrValidation').hidden = false;
         document.getElementById('telefonnrValidation').style.color = "red";
         document.getElementById('telefonnrValidation').style.display = "inline";
@@ -66,7 +66,7 @@ movieForm.addEventListener("submit", (e) => {
     }else{
         document.getElementById('telefonnrValidation').hidden = true;
     }
-    if( receipt.eMail == ""){
+    if( receipt.eMail == "" || !emailRegex.test(receipt.eMail)){
         document.getElementById('emailValidation').hidden = false;
         document.getElementById('emailValidation').style.color = "red";
         document.getElementById('emailValidation').style.display = "inline";
